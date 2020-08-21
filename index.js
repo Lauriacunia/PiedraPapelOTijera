@@ -24,6 +24,7 @@ console.log(jugarPiedraPapelTijera('tijera', 'tijera'))  // ¡Empate!
 //repetir x 3
 //Comparar resultados
 //Mostrar ganador
+let contadorPlayer = 0, contadorCompu = 0;
 
 const darBienvenida = () =>{
 
@@ -38,16 +39,79 @@ const juegaPlayer = () => {
 
     console.log("¿Listo para jugar? ")
     console.log("¿Piedra, Papel o tijera? Elija una opción: ")
-    console.log(" 1- ✊ Piedra 2- ✋ Papel  3- ✌ Tijera ")
+    let mano = console.log(" 1- ✊ Piedra 2- ✋ Papel  3- ✌ Tijera ")
+    let queEligioPlayer = traducirMano(mano)
+    console.log(`Elegiste  ${queEligioPlayer}`)
+    console.log("-------------------------------------- ")
 
 }
 
 const juegaCompu = () => {
 
-    let mano = 
+    console.log("Es el turno de la Computadora")
+    console.log("¿Piedra, Papel o tijera?")
+
+    let mano = 1 + Math.floor((3 - 1 ) * Math.random())  // tendria que darme 1, 2 o 3 aleatorio
+
+    let queEligioCompu = traducirMano(mano)
+
+    console.log(`La computadora eligió  ${queEligioCompu}`)
 
     return mano
 }
+
+let compararManos = (manoPlayer, manoCompu) => {
+// 1- piedra 2 - papel 3- tijera
+
+    if(manoPlayer == manoCompu){
+        console.log("¡Empataron! 😐")
+    }
+    else if(manoPlayer == 1 && manoCompu == 2){
+        console.log("¡Ganó la Compu! 😠")
+        contadorCompu ++
+    }
+    else if(manoPlayer == 1 && manoCompu == 3){
+        console.log("¡Ganaste! 😆")
+        contadorPlayer ++
+    }
+    else if(manoPlayer == 2 && manoCompu == 1){
+        console.log("¡Ganaste! 😆")
+        contadorPlayer ++
+    }
+    else if (manoPlayer == 2 && manoCompu == 3){
+        console.log("¡Ganó la Compu! 😠")
+        contadorCompu ++
+    }
+    else if(manoPlayer == 3 && manoCompu == 1){
+        console.log("¡Ganó la Compu! 😠")
+        contadorCompu ++
+    }
+    else if(manoPlayer == 3 && manoCompu == 2){
+        console.log("¡Ganaste! 😆")
+        contadorPlayer ++
+    }
+    else {
+      console.log("Lo sentimos, ha ocurrido un error inesperado")
+    }
+}
+let traducirMano = (numero) => {
+
+    switch (numero) {
+        case 1:
+            return "Piedra ✊"
+            break;
+        case 2:
+            return "Papel ✋"
+            break;
+        case 3:
+            return "Tijera ✌"
+            break;
+        default:
+            break;
+    }
+}
+
+
 // ALGORITMO
 
 darBienvenida()
@@ -55,3 +119,5 @@ darBienvenida()
 let manoPlayer = juegaPlayer()
 
 let manoCompu = juegaCompu()
+
+let ganoMano = compararManos(manoPlayer, manoCompu)  
