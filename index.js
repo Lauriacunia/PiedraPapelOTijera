@@ -24,134 +24,116 @@ alert(jugarPiedraPapelTijera('tijera', 'tijera'))  // ¡Empate!
 //repetir x 3
 //Comparar resultados
 //Mostrar ganador
-let contadorPlayer = 0, contadorCompu = 0;
+let contadorPlayer = 0,
+    contadorCompu = 0,
+    seguirJugando = false;
 
-const darBienvenida = () =>{
-
-    alert("*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*")
-    alert("    Bienvenido a Piedra Papel o Tijera    ")
-    alert("               ✋   ✌   ✊                 ")
-    alert("*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*")
-
+const darBienvenida = () => {
+	alert(
+		'*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*\n                  Bienvenido a Piedra Papel o Tijera              \n                         ✋   ✌   ✊                    \n  *☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*'
+	);
 }
 
 const juegaPlayer = () => {
-
-    alert("¿Listo para jugar? ")
-    alert("¿Piedra, Papel o tijera? Ingrese el numero elegido ")
-    let mano = prompt(" 1- ✊ Piedra 2- ✋ Papel  3- ✌ Tijera ")
-    let queEligioPlayer = traducirMano(mano)
-    alert(`Elegiste  ${queEligioPlayer}`)
+	let mano = prompt('¿Listo para jugar? \n ¿Piedra, Papel o tijera? Ingrese el numero elegido \n 1- ✊ Piedra 2- ✋ Papel  3- ✌ Tijera ');
     
+    let queEligioPlayer = traducirMano(Number(mano));
+    
+    alert(`Elegiste  ${queEligioPlayer}`);
 
+    return Number(mano);
 }
 
 const juegaCompu = () => {
+	alert('Es el turno de la Computadora 💻 ¿Piedra, Papel o tijera?');
 
-    alert("Es el turno de la Computadora 💻 ")
-    alert("¿Piedra, Papel o tijera?")
+	let mano = 1 + Math.floor((3 - 1) * Math.random()); // tendria que darme 1, 2 o 3 aleatorio
 
-    let mano = 1 + Math.floor((3 - 1 ) * Math.random())  // tendria que darme 1, 2 o 3 aleatorio
+	let queEligioCompu = traducirMano(mano);
 
-    let queEligioCompu = traducirMano(mano)
+	alert(`La computadora eligió  ${queEligioCompu}`);
 
-    alert(`La computadora eligió  ${queEligioCompu}`)
-
-    return mano
+	return mano;
 }
 
 let compararManos = (manoPlayer, manoCompu) => {
-// 1- piedra 2 - papel 3- tijera
+	// 1- piedra 2 - papel 3- tijera
 
-    if(manoPlayer == manoCompu){
-        alert("¡Empataron! 😐")
-    }
-    else if(manoPlayer == 1 && manoCompu == 2){
-        alert("¡Ganó la Compu! 😠")
-        contadorCompu ++
-    }
-    else if(manoPlayer == 1 && manoCompu == 3){
-        alert("¡Ganaste! 😆")
-        contadorPlayer ++
-    }
-    else if(manoPlayer == 2 && manoCompu == 1){
-        alert("¡Ganaste! 😆")
-        contadorPlayer ++
-    }
-    else if (manoPlayer == 2 && manoCompu == 3){
-        alert("¡Ganó la Compu! 😠")
-        contadorCompu ++
-    }
-    else if(manoPlayer == 3 && manoCompu == 1){
-        alert("¡Ganó la Compu! 😠")
-        contadorCompu ++
-    }
-    else if(manoPlayer == 3 && manoCompu == 2){
-        alert("¡Ganaste! 😆")
-        contadorPlayer ++
-    }
-    else {
-      alert("Lo sentimos, ha ocurrido un error inesperado")
-    }
+	if (manoPlayer == manoCompu) {
+		alert('¡Empataron! 😐');
+	} else if (manoPlayer == 1 && manoCompu == 2) {
+		alert('¡Ganó la Compu! 😠');
+		contadorCompu++;
+	} else if (manoPlayer == 1 && manoCompu == 3) {
+		alert('¡Ganaste! 😆');
+		contadorPlayer++;
+	} else if (manoPlayer == 2 && manoCompu == 1) {
+		alert('¡Ganaste! 😆');
+		contadorPlayer++;
+	} else if (manoPlayer == 2 && manoCompu == 3) {
+		alert('¡Ganó la Compu! 😠');
+		contadorCompu++;
+	} else if (manoPlayer == 3 && manoCompu == 1) {
+		alert('¡Ganó la Compu! 😠');
+		contadorCompu++;
+	} else if (manoPlayer == 3 && manoCompu == 2) {
+		alert('¡Ganaste! 😆');
+		contadorPlayer++;
+	} else {
+		alert('Lo sentimos, ha ocurrido un error inesperado');
+	}
 }
+
 let traducirMano = (numero) => {
-
-    switch (numero) {
-        case 1:
-            return "Piedra ✊"
-            break;
-        case 2:
-            return "Papel ✋"
-            break;
-        case 3:
-            return "Tijera ✌"
-            break;
-        default:
-            break;
-    }
+	switch (numero) {
+		case 1:
+			return 'Piedra ✊';
+			break;
+		case 2:
+			return 'Papel ✋';
+			break;
+		case 3:
+			return 'Tijera ✌';
+			break;
+		default:
+			break;
+	}
 }
 
-let saludar = () =>{
-    alert(`💜 ¡Fue muy divertido jugar juntos! 💜 Bye Bye `)
+let saludar = () => {
+	alert(`💜 ¡Fue muy divertido jugar juntos! 💜 Bye Bye `);
 }
 
 let anunciarGanador = () => {
-    if(contadorPlayer == contadorCompu){
-        return "🔥🔥¡¡Hubo empate!!🔥🔥"
-    }
-    else if(contadorPlayer > contadorCompu){
-        return "🎆🎆 ¡Ganaste! 🎆🎆"
-    }
-    else{
-        return "👎👎¡Ganó la compu!Buuu!!👎👎"
-    }
-
+	if (contadorPlayer == contadorCompu) {
+		return '🔥🔥¡¡Hubo empate!!🔥🔥';
+	} else if (contadorPlayer > contadorCompu) {
+		return '🎆🎆 ¡Ganaste! 🎆🎆';
+	} else {
+		return '👎👎¡Ganó la compu!Buuu!!👎👎';
+	}
 }
+
 // ALGORITMO
 
-darBienvenida()
+darBienvenida();
 
 do {
+	for (let i = 0; i <= 2; i++) {
+		alert(`Esta es la ronda ${i + 1}`);
 
-    for (let i = 0; i <= 3; i++) {
+		let manoPlayer = juegaPlayer();
 
-        alert(`Esta es la ronda ${i + 1}`)
-
-        let manoPlayer = juegaPlayer()
-    
-        let manoCompu = juegaCompu()
+        let manoCompu = juegaCompu();
         
-        alert(`En la ronda ${i + 1} el resultado fue:  ${compararManos(manoPlayer, manoCompu)} `)
-        
-        
-    }
-    
-    alert(`El resultado de las tres rondas es:  ${ anunciarGanador()} `)
-   
+        compararManos(manoPlayer, manoCompu)
 
-    let seguirJugando = confirm("¿Querés volver a Jugar?")
+	}
+
+	alert(`El resultado de las tres rondas es:  ${anunciarGanador()} `);
+
+    seguirJugando = confirm('¿Querés volver a Jugar?');
     
 } while (seguirJugando);
 
-saludar()
-
+saludar();
