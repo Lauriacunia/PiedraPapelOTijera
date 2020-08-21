@@ -3,15 +3,15 @@ Crear una función jugarPiedraPapelTijera que tome como argumentos dos strings a
  que representen una jugada (piedra, papel, tijera) y dependiendo el devuelva un string 
  con un mensaje avisando qué jugada ganó (o si hubo empate)
 
-console.log(jugarPiedraPapelTijera('tijera', 'piedra'))  // ¡Ganó piedra!
-console.log(jugarPiedraPapelTijera('piedra', 'tijera'))  // ¡Ganó piedra!
-console.log(jugarPiedraPapelTijera('papel', 'piedra'))   // ¡Ganó papel!
-console.log(jugarPiedraPapelTijera('piedra', 'papel'))   // ¡Ganó papel!
-console.log(jugarPiedraPapelTijera('papel', 'tijera'))   // ¡Ganó tijera!
-console.log(jugarPiedraPapelTijera('tijera', 'papel'))   // ¡Ganó tijera!
-console.log(jugarPiedraPapelTijera('piedra', 'piedra'))  // ¡Empate!
-console.log(jugarPiedraPapelTijera('papel', 'papel'))    // ¡Empate!
-console.log(jugarPiedraPapelTijera('tijera', 'tijera'))  // ¡Empate!
+alert(jugarPiedraPapelTijera('tijera', 'piedra'))  // ¡Ganó piedra!
+alert(jugarPiedraPapelTijera('piedra', 'tijera'))  // ¡Ganó piedra!
+alert(jugarPiedraPapelTijera('papel', 'piedra'))   // ¡Ganó papel!
+alert(jugarPiedraPapelTijera('piedra', 'papel'))   // ¡Ganó papel!
+alert(jugarPiedraPapelTijera('papel', 'tijera'))   // ¡Ganó tijera!
+alert(jugarPiedraPapelTijera('tijera', 'papel'))   // ¡Ganó tijera!
+alert(jugarPiedraPapelTijera('piedra', 'piedra'))  // ¡Empate!
+alert(jugarPiedraPapelTijera('papel', 'papel'))    // ¡Empate!
+alert(jugarPiedraPapelTijera('tijera', 'tijera'))  // ¡Empate!
 */
 
 // JUEGO DE CONSOLA PLAYER VS COMPU
@@ -28,34 +28,34 @@ let contadorPlayer = 0, contadorCompu = 0;
 
 const darBienvenida = () =>{
 
-    console.log("*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*")
-    console.log("    Bienvenido a Piedra Papel o Tijera    ")
-    console.log("               ✋   ✌   ✊                 ")
-    console.log("*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*")
+    alert("*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*")
+    alert("    Bienvenido a Piedra Papel o Tijera    ")
+    alert("               ✋   ✌   ✊                 ")
+    alert("*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*――*☆*")
 
 }
 
 const juegaPlayer = () => {
 
-    console.log("¿Listo para jugar? ")
-    console.log("¿Piedra, Papel o tijera? Elija una opción: ")
-    let mano = console.log(" 1- ✊ Piedra 2- ✋ Papel  3- ✌ Tijera ")
+    alert("¿Listo para jugar? ")
+    alert("¿Piedra, Papel o tijera? Ingrese el numero elegido ")
+    let mano = prompt(" 1- ✊ Piedra 2- ✋ Papel  3- ✌ Tijera ")
     let queEligioPlayer = traducirMano(mano)
-    console.log(`Elegiste  ${queEligioPlayer}`)
-    console.log("-------------------------------------- ")
+    alert(`Elegiste  ${queEligioPlayer}`)
+    
 
 }
 
 const juegaCompu = () => {
 
-    console.log("Es el turno de la Computadora")
-    console.log("¿Piedra, Papel o tijera?")
+    alert("Es el turno de la Computadora 💻 ")
+    alert("¿Piedra, Papel o tijera?")
 
     let mano = 1 + Math.floor((3 - 1 ) * Math.random())  // tendria que darme 1, 2 o 3 aleatorio
 
     let queEligioCompu = traducirMano(mano)
 
-    console.log(`La computadora eligió  ${queEligioCompu}`)
+    alert(`La computadora eligió  ${queEligioCompu}`)
 
     return mano
 }
@@ -64,34 +64,34 @@ let compararManos = (manoPlayer, manoCompu) => {
 // 1- piedra 2 - papel 3- tijera
 
     if(manoPlayer == manoCompu){
-        console.log("¡Empataron! 😐")
+        alert("¡Empataron! 😐")
     }
     else if(manoPlayer == 1 && manoCompu == 2){
-        console.log("¡Ganó la Compu! 😠")
+        alert("¡Ganó la Compu! 😠")
         contadorCompu ++
     }
     else if(manoPlayer == 1 && manoCompu == 3){
-        console.log("¡Ganaste! 😆")
+        alert("¡Ganaste! 😆")
         contadorPlayer ++
     }
     else if(manoPlayer == 2 && manoCompu == 1){
-        console.log("¡Ganaste! 😆")
+        alert("¡Ganaste! 😆")
         contadorPlayer ++
     }
     else if (manoPlayer == 2 && manoCompu == 3){
-        console.log("¡Ganó la Compu! 😠")
+        alert("¡Ganó la Compu! 😠")
         contadorCompu ++
     }
     else if(manoPlayer == 3 && manoCompu == 1){
-        console.log("¡Ganó la Compu! 😠")
+        alert("¡Ganó la Compu! 😠")
         contadorCompu ++
     }
     else if(manoPlayer == 3 && manoCompu == 2){
-        console.log("¡Ganaste! 😆")
+        alert("¡Ganaste! 😆")
         contadorPlayer ++
     }
     else {
-      console.log("Lo sentimos, ha ocurrido un error inesperado")
+      alert("Lo sentimos, ha ocurrido un error inesperado")
     }
 }
 let traducirMano = (numero) => {
@@ -111,13 +111,47 @@ let traducirMano = (numero) => {
     }
 }
 
+let saludar = () =>{
+    alert(`💜 ¡Fue muy divertido jugar juntos! 💜 Bye Bye `)
+}
 
+let anunciarGanador = () => {
+    if(contadorPlayer == contadorCompu){
+        return "🔥🔥¡¡Hubo empate!!🔥🔥"
+    }
+    else if(contadorPlayer > contadorCompu){
+        return "🎆🎆 ¡Ganaste! 🎆🎆"
+    }
+    else{
+        return "👎👎¡Ganó la compu!Buuu!!👎👎"
+    }
+
+}
 // ALGORITMO
 
 darBienvenida()
 
-let manoPlayer = juegaPlayer()
+do {
 
-let manoCompu = juegaCompu()
+    for (let i = 0; i <= 3; i++) {
 
-let ganoMano = compararManos(manoPlayer, manoCompu)  
+        alert(`Esta es la ronda ${i + 1}`)
+
+        let manoPlayer = juegaPlayer()
+    
+        let manoCompu = juegaCompu()
+        
+        alert(`En la ronda ${i + 1} el resultado fue:  ${compararManos(manoPlayer, manoCompu)} `)
+        
+        
+    }
+    
+    alert(`El resultado de las tres rondas es:  ${ anunciarGanador()} `)
+   
+
+    let seguirJugando = confirm("¿Querés volver a Jugar?")
+    
+} while (seguirJugando);
+
+saludar()
+
